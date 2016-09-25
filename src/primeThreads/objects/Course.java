@@ -1,3 +1,5 @@
+import primeThreads.objects;
+
 public class Course{
 	//name of course
 	private String name;
