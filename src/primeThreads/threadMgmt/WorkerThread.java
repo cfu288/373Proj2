@@ -1,5 +1,4 @@
 package primeThreads.threadMgmt;
-
 import primeThreads.objects.*;
 import primeThreads.util.*;
 public class WorkerThread implements Runnable  {
@@ -45,7 +44,7 @@ public class WorkerThread implements Runnable  {
             if(d == null){System.out.println("NULL");}
             else{ System.out.println(d.toString());}
     		//Store the results in the data structure in the Results instance
-
+    		//Results.saveCourses(student);
     //	}
     //	catch(InterruptedException exception){
     		

@@ -44,21 +44,37 @@ public class Student{
 		this.Name = name;
 	}
 	
+	public Course getAssignedCourse1(){
+		return AssignedCourse1;
+	}
+	
 	/*
-	 * set courses for a student 
+	 * set course 1 for a student 
 	 * @param Course
 	 */
-	private void setAssignedCourse1(Course assignedCourse1) {
+	public void setAssignedCourse1(Course assignedCourse1) {
 		AssignedCourse1 = assignedCourse1;
 	}
 
-	private void setAssignedCourse2(Course assignedCourse2) {
+	public Course getAssignedCourse2(){
+		return AssignedCourse2;
+	}
+	
+	public void setAssignedCourse2(Course assignedCourse2) {
 		AssignedCourse2 = assignedCourse2;
 	}
 
-	private void setAssignedCourse3(Course assignedCourse3) {
+	public Course getAssignedCourse3(){
+		return AssignedCourse3;
+	}
+	
+	public void setAssignedCourse3(Course assignedCourse3) {
 		AssignedCourse3 = assignedCourse3;
 	}
+	
+	
+	
+	
 	
 	/*
 	 * getter for student's total preference
