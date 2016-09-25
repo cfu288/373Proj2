@@ -16,8 +16,16 @@ public class WorkerThread implements Runnable  {
     	student = stud;
   
     }
-
+	/**
+	 * 
+	 */
     public void run() {
+    	//Invoke a method in the FileProcessor to read one line as a string
+    	String[] studentInfo = fileProcessor.getStringArray();
+    	//Run your algorithm to assign courses to this student.
+    	//Store the results in the data structure in the Results instance
+    	
+    }
     /*
 	 * assign courses according to the students preferences.
 	 * @param Vector<courses>
@@ -52,4 +60,3 @@ public class WorkerThread implements Runnable  {
 		}  		}
 	*/
     } 
-}
