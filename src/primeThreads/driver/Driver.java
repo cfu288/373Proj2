@@ -1,6 +1,8 @@
 package primeThreads.driver;
 
 import primeThreads.util.*;
+import primeThreads.threadMgmt.*;
+import java.io.BufferedReader;
 
 public class Driver{
 	public static void main(String args[]) {
@@ -11,8 +13,12 @@ public class Driver{
             int DEBUG_VALUE = Integer.parseInt(args[3]);
             Logger l = new Logger();
             l.setDebugValue(DEBUG_VALUE);
-            
 
+            FileProcessor fp = new FileProcessor();
+            BufferedReader x  = fp.openReader(inp);
+            CreateWorkers c = new CreateWorkers(); 
+            c.startWorkers(fp);
+            fp.closeReader(x);
 
         }
 	} // end main(...)
