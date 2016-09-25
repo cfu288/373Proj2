@@ -3,6 +3,10 @@ package primeThreads.threadMgmt;
 
 public class CreateWorkers  {
 
-    // this class has the method startWokers(...)
+    public static void startWokers(FileProcessor f, Student s, Course c){
+        (new Thread(new WorkerThread())).start();
+    }
+
+
 
 }
