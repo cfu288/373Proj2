@@ -3,23 +3,28 @@ package primeThreads.threadMgmt;
 
 public class WorkerThread implements Runnable  {
 	
-	FileProcessor fp;
+	private FileProcessor fileProcessor;
+	private Student student;
+	//private ObjectPool;
    /**
     * Constructor
     */
-	WorkerThread(FileProcessor fp, Student std, Course cr){
-    	
+	public WorkerThread(FileProcessor fp, Student stud //Object pool, 
+			){
+		fileProcessor = fp;
+    	student = stud;
+  
     }
 
     public void run() {
 	// ...
-    }
+    } 
     
     /*
 	 * assign courses according to the students preferences.
 	 * @param Vector<courses>
 	 */
-    public void assignCoursesbyPreference(Vector<Course> courses){
+  /*  public void assignCoursesbyPreference(Vector<Course> courses){
     	//iterates through preference rank	
     	for(int j = 1; j <= Preferences.size(); j++){
     		//iterates through courses to find the one that makes with preference 
@@ -46,7 +51,7 @@ public class WorkerThread implements Runnable  {
     					break;
     				}
     			}
-			}
-		}
-    }
+		}  		}
+	*/
+    } 
 }

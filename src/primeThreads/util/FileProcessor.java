@@ -1,4 +1,4 @@
-package assig2;
+package primeThreads.util;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
@@ -60,10 +60,11 @@ public class FileProcessor {
 	
 	/**
 	 * Splits a line into an array of words 
-	 * @param str String 
+	 * @param bufferedReader BufferedReader 
 	 * @return splittedLine array of Strings
 	 */
-	public String[] getStringArray(String str){
+	public String[] getStringArray(BufferedReader bufferedReader){
+		getLine();
 		String[] splittedLine = str.split(" ");
 		return splittedLine;
 	}

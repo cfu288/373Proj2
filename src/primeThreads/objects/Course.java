@@ -1,4 +1,4 @@
-import primeThreads.objects;
+package primeThreads.objects;
 
 public class Course{
 	//name of course

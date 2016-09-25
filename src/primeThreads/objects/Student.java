@@ -1,4 +1,5 @@
-import primeThreads.objects;
+package primeThreads.objects;
+import java.util.Vector;
 
 public class Student{
 	
