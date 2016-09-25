@@ -11,9 +11,9 @@ public class Driver{
             int DEBUG_VALUE = Integer.parseInt(args[3]);
             Logger l = new Logger();
             l.setDebugValue(DEBUG_VALUE);
-            l.writeOutput("Testing level 4",4);
-            l.writeOutput("Testing level 3",3);
-            l.writeOutput("Testing level 2",2);
+            
+
+
         }
 	} // end main(...)
 

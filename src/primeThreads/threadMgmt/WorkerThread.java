@@ -1,6 +1,7 @@
 
 package primeThreads.threadMgmt;
-
+import primeThreads.objects.*;
+import primeThreads.util.*;
 public class WorkerThread implements Runnable  {
 	
 	private FileProcessor fileProcessor;
@@ -17,9 +18,6 @@ public class WorkerThread implements Runnable  {
     }
 
     public void run() {
-	// ...
-    } 
-    
     /*
 	 * assign courses according to the students preferences.
 	 * @param Vector<courses>
