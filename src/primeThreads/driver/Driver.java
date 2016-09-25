@@ -15,10 +15,10 @@ public class Driver{
             l.setDebugValue(DEBUG_VALUE);
 
             FileProcessor fp = new FileProcessor();
-            BufferedReader x  = fp.openReader(inp);
+            fp.openReader(inp);
             CreateWorkers c = new CreateWorkers(); 
             c.startWorkers(fp);
-            fp.closeReader(x);
+            fp.closeReader();
 
         }
 	} // end main(...)
