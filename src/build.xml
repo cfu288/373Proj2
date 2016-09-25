@@ -51,10 +51,10 @@
 
 <target name="run" depends="jar">
         <java jar="${BUILD}/jar/primeThreads.jar"  fork="true">
-		<arg value="${arg0}"/>
-		<arg value="${arg1}"/>
-		<arg value="${arg2}"/>
-		<arg value="${arg3}"/>
+		<arg value="input.txt"/>
+		<arg value="output.txt"/>
+		<arg value="3"/>
+		<arg value="4"/>
         </java>
 	
     </target>
