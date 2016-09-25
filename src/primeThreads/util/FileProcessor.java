@@ -64,7 +64,7 @@ public class FileProcessor {
 	 * @return splittedLine array of Strings
 	 */
 	public String[] getStringArray(BufferedReader bufferedReader){
-		getLine();
+		String str = getLine(bufferedReader);
 		String[] splittedLine = str.split(" ");
 		return splittedLine;
 	}
