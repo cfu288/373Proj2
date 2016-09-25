@@ -66,7 +66,7 @@ public class FileProcessor {
 	 */
 	public String[] getStringArray(){
 		String str = getLine();
-		String[] splittedLine = str.split(" ");
+		String[] splittedLine = str.split("\\s+");
 		return splittedLine;
 	}
 	
