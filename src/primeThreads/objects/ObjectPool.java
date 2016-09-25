@@ -20,10 +20,17 @@ public class ObjectPool{
     private String[] names = {"A", "B", "C", "D", "E", "F", "G"};
     
     public ObjectPool(){
-        for(int i =0;i<4;i++){
+        for(int i =0;i < 4;i++){
             Course tmp = new Course(names[i]);
-            unlocked.put("names[i]",tmp);
+            unlocked.put(names[i],tmp);
         }
+        /*System.out.println("SIZE OF unlocked: " + unlocked.size());
+        for (String name: unlocked.keySet()){
+            String key = name.toString();
+            String value = unlocked.get(name).toString();  
+            System.out.println(key + " " + value);  
+         }*/ 
+
     }
 
     public synchronized Course aquire(String s){//checkout
