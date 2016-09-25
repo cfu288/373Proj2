@@ -9,33 +9,35 @@ import java.io.UnsupportedEncodingException;
 
 public class FileProcessor {
     
+	BufferedReader br = null;
+	PrintWriter wt = null;
 	/**
 	 * Opens file
 	 * @param fileName String
 	 * @return bufferedReader BufferedReader
 	 */
-	public BufferedReader openReader(String fileName){
+	public void openReader(String fileName){
 		FileReader fileReader;
 		BufferedReader bufferedReader = null;
 		try {
 			fileReader = new FileReader(fileName);
 			// Always wrap FileReader in BufferedReader.
 			bufferedReader = new BufferedReader(fileReader);
+			br = bufferedReader;
 			
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 			System.exit(0);
 		}
-		return bufferedReader;
 	}
 	
 	/**
 	 * Closes Reader
 	 * @param bufferedReader BufferedReader
 	 */
-	public void closeReader(BufferedReader bufferedReader){
+	public void closeReader(){
 		try {
-			bufferedReader.close();
+			br.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 			System.exit(0);
@@ -47,10 +49,10 @@ public class FileProcessor {
 	 * @param bufferedReader BufferedReader
 	 * @return str String
 	 */
-	public String getLine(BufferedReader bufferedReader){
+	public String getLine(){
 			String str = null;
 			try {
-				str = bufferedReader.readLine();
+				str = br.readLine();
 			} catch (IOException e) {
 				e.printStackTrace();
 				System.exit(0);
@@ -63,8 +65,8 @@ public class FileProcessor {
 	 * @param bufferedReader BufferedReader 
 	 * @return splittedLine array of Strings
 	 */
-	public String[] getStringArray(BufferedReader bufferedReader){
-		getLine();
+	public String[] getStringArray(){
+		String str = getLine();
 		String[] splittedLine = str.split(" ");
 		return splittedLine;
 	}
@@ -78,6 +80,7 @@ public class FileProcessor {
 		PrintWriter writer = null;
 		try {
 			writer = new PrintWriter(filename, "UTF-8");
+			wt = writer;
 		} catch (FileNotFoundException | UnsupportedEncodingException e) {
 			e.printStackTrace();
 			System.exit(0);
@@ -89,8 +92,8 @@ public class FileProcessor {
 	 * Closes PrintWriter
 	 * @param writer PrintWriter
 	 */
-	public void closeWriter(PrintWriter writer){
-		 writer.close(); 
+	public void closeWriter(){
+		 wt.close(); 
 	}
 	
 	/**
@@ -98,7 +101,7 @@ public class FileProcessor {
 	 * @param writer PrintWriter
 	 * @param str String
 	 */
-	public void writeLine(PrintWriter writer, String str){
-		writer.println(str);
+	public void writeLine(String str){
+		wt.println(str);
 	}
 }
