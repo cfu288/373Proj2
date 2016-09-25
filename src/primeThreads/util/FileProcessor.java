@@ -9,8 +9,8 @@ import java.io.UnsupportedEncodingException;
 
 public class FileProcessor {
     
-	BufferedReader br = null;
-	PrintWriter wt = null;
+	private BufferedReader br = null;
+	private PrintWriter wt = null;
 	/**
 	 * Opens file
 	 * @param fileName String
@@ -18,12 +18,11 @@ public class FileProcessor {
 	 */
 	public void openReader(String fileName){
 		FileReader fileReader;
-		BufferedReader bufferedReader = null;
 		try {
 			fileReader = new FileReader(fileName);
 			// Always wrap FileReader in BufferedReader.
-			bufferedReader = new BufferedReader(fileReader);
-			br = bufferedReader;
+			br = new BufferedReader(fileReader);
+			
 			
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
@@ -76,16 +75,13 @@ public class FileProcessor {
 	 * @param filename String
 	 * @return writer PrintWriter
 	 */
-	public PrintWriter openWriter(String filename){
-		PrintWriter writer = null;
+	public void openWriter(String filename){
 		try {
-			writer = new PrintWriter(filename, "UTF-8");
-			wt = writer;
+			wt = new PrintWriter(filename, "UTF-8");
 		} catch (FileNotFoundException | UnsupportedEncodingException e) {
 			e.printStackTrace();
 			System.exit(0);
 		}
-		return writer;
 	}
 	
 	/**
