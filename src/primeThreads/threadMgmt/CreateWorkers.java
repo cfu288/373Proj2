@@ -2,13 +2,19 @@ package primeThreads.threadMgmt;
 
 import primeThreads.objects.*;
 import primeThreads.util.*;
+import java.lang.InterruptedException;
 
 public class CreateWorkers  {
 
     public static void startWorkers(FileProcessor f/*ObjectPool o*/){
-        Thread t = new Thread(new WorkerThread(f));
+        WorkerThread wt = new WorkerThread(f);
+        Thread t = new Thread(wt);
         t.start();
-        t.join();
+        try{
+            t.join();
+        }catch(InterruptedException e){
+            e.printStackTrace();
+        }
     }
 
 

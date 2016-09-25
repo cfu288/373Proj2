@@ -10,10 +10,9 @@ public class WorkerThread implements Runnable  {
    /**
     * Constructor
     */
-	public WorkerThread(FileProcessor fp, Student stud //Object pool, 
-			){
+	public WorkerThread(FileProcessor fp/*ObjectPool pool*/){
 		fileProcessor = fp;
-    	student = stud;
+    	//student = stud;
   
     }
 	/**
