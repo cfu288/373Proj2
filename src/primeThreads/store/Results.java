@@ -20,7 +20,7 @@ public class Results implements StdoutDisplayInterface {
 	 */
 	public synchronized void saveResults(Student student){
 		studentList.add(listNumber, student);
-	}
+    }
 	
 	
     public synchronized void writeSchedulesToScreen(){

@@ -1,6 +1,8 @@
 package primeThreads.driver;
 
 import primeThreads.util.*;
+import primeThreads.objects.*;
+import primeThreads.store.*;
 import primeThreads.threadMgmt.*;
 import java.io.BufferedReader;
 
@@ -8,6 +10,7 @@ public class Driver{
 	public static void main(String args[]) {
         if(args.length < 3) System.out.println("INCORRECT ARGS(4)");
         else{
+            //COMMAND LINE ARG PARSING AND VERIFICATION
 		    String inp = args[0]; String out = args[1];
             int NUM_THREADS = Integer.parseInt(args[2]);
             int DEBUG_VAL = Integer.parseInt(args[3]);
@@ -16,15 +19,16 @@ public class Driver{
                 System.out.println("INCORRECT THREAD NUM OR DEBUG VAL");
                 System.exit(0);
             }
+            //CALLING CREATEWORKERS, INSTANTIATING CLASSES
             Logger l = new Logger();
             l.setDebugValue(DEBUG_VAL);
-
             FileProcessor fp = new FileProcessor();
             fp.openReader(inp);
             CreateWorkers c = new CreateWorkers(); 
-            c.startWorkers(fp,NUM_THREADS);
+            Results r = new Results();
+            ObjectPool o = ObjectPool.getInstance();
+            c.startWorkers(fp,NUM_THREADS,o,r);
             fp.closeReader();
-
         }
 	} // end main(...)
 
