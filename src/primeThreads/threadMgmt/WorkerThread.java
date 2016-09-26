@@ -29,8 +29,20 @@ public class WorkerThread implements Runnable  {
     		
     		student.printPreferences();
     		//Run your algorithm to assign courses to this student.
-    	
-    	
+            ObjectPool op = ObjectPool.getInstance();   	
+            Course c = op.aquire("A");
+            if(c == null){System.out.println("NULL");}
+            else{ System.out.println(c.toString());}
+            
+            Course d = op.aquire("A");
+            if(d == null){System.out.println("NULL");}
+            else{ System.out.println(d.toString());}
+            
+            op.release("A");
+            
+            d = op.aquire("A");
+            if(d == null){System.out.println("NULL");}
+            else{ System.out.println(d.toString());}
     		//Store the results in the data structure in the Results instance
     		//Results.saveCourses(student);
     //	}
