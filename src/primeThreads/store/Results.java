@@ -9,8 +9,9 @@ public class Results implements StdoutDisplayInterface {
     // appropriate data structure as private data member
 	private List<Student> studentList;
 	private int listNumber;
+	
 	public Results(){
-		studentList = Collections.synchronizedList(new ArrayList<Student>());
+		studentList = Collections.synchronizedList(new ArrayList<Student>(81));
 		listNumber = 0;
 	}
 	/**
@@ -18,10 +19,7 @@ public class Results implements StdoutDisplayInterface {
 	 * param Student
 	 */
 	public synchronized void saveResults(Student student){
-		studentList.get(listNumber).setName(student.getName());
-		studentList.get(listNumber).setAssignedCourse1(student.getAssignedCourse1());
-		studentList.get(listNumber).setAssignedCourse2(student.getAssignedCourse2());
-		studentList.get(listNumber).setAssignedCourse3(student.getAssignedCourse3());
+		studentList.add(listNumber, student);
 	}
 	
 	

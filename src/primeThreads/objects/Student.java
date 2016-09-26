@@ -8,11 +8,14 @@ public class Student{
 	
 	//List that contains preferences of Student
 	private Vector<Integer> Preferences = new Vector<Integer>(4);
+	private String[] names = {"A", "B", "C", "D", "E", "F", "G"};
 	
 	//assigned courses 
 	private Course AssignedCourse1;
 	private Course AssignedCourse2;
 	private Course AssignedCourse3;
+	private Course AssignedCourse4;
+	private Course AssignedCourse5;
 	
 	//Total preference score field
 	private int TotalPreference;
@@ -25,6 +28,8 @@ public class Student{
 		AssignedCourse1 = null;
 		AssignedCourse2 = null;
 		AssignedCourse3 = null;
+		AssignedCourse4 = null;
+		AssignedCourse5 = null;
 		TotalPreference = 0;
 	}
 	
@@ -72,10 +77,39 @@ public class Student{
 		AssignedCourse3 = assignedCourse3;
 	}
 	
+	public Course getAssignedCourse4(){
+		return AssignedCourse4;
+	}
 	
+	public void setAssignedCourse4(Course assignedCourse4) {
+		AssignedCourse4 = assignedCourse4;
+	}
 	
+	public Course getAssignedCourse5(){
+		return AssignedCourse5;
+	}
 	
+	public void setAssignedCourse5(Course assignedCourse5) {
+		AssignedCourse5 = assignedCourse5;
+	}
 	
+	public void enroll(Course c){
+		if(AssignedCourse1 == null){
+			setAssignedCourse1(c);
+		}
+		else if(AssignedCourse2 == null){
+			setAssignedCourse2(c);
+		}
+		else if(AssignedCourse3 == null){
+			setAssignedCourse3(c);
+		}
+	/*	else if(AssignedCourse4 == null){
+			setAssignedCourse4(c);
+		}
+		else{
+			setAssignedCourse5(c);
+		} */
+	}
 	/*
 	 * getter for student's total preference
 	 * @return int
@@ -108,42 +142,18 @@ public class Student{
 		System.out.print(Preferences.get(2) + " ");
 		System.out.println(Preferences.get(3));
 	}
-	
-	/*
-	 * assign courses according to the students preferences.
-	 * @param Vector<courses>
-	 */
-    public void assignCoursesbyPreference(Vector<Course> courses){
-    	//iterates through preference rank	
-    	for(int j = 1; j <= Preferences.size(); j++){
-    		//iterates through courses to find the one that makes with preference 
-    		for(int i = 0; i < courses.size(); i++){
-    			if(Preferences.get(i) == j){
-    				if(courses.get(i).getSpotsRemaining() > 0){
-    					if(AssignedCourse1 == null){
-    						setAssignedCourse1(courses.get(i));
-    					}
-    					else if(AssignedCourse2 == null){
-    						setAssignedCourse2(courses.get(i));
-    					}
-    					else if(AssignedCourse3 == null){
-    						setAssignedCourse3(courses.get(i));
-    					}
-    					else{
-    						return;
-    					}
-    					courses.get(i).addAStudentToCourse();
-    					TotalPreference += j;
-    				}
-    				else{
-    					//use second highest preferred courses
-    					break;
-    				}
-    			}
+    
+	public String findPreference(int rank){
+		String index = null;
+		for(int i = 0; i < Preferences.size(); i++){
+			if(Preferences.get(i) == rank){
+				index = names[i];
 			}
 		}
-    }
-    
+		return index;
+	}
+	
+	
     /*
      * Formatted String
      * @return string
