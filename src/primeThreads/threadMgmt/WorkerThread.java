@@ -43,7 +43,7 @@ public class WorkerThread implements Runnable  {
     			if(newCourse.getSpotsRemaining() > 0){
     				student.enroll(newCourse);
     				newCourse.addAStudentToCourse();
-    				student.increaseTotalPreference(student.getRank(className));
+    				student.increaseTotalPreference(initPref);
     				
     			} 
     			op.release(className);
