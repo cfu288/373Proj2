@@ -10,14 +10,19 @@ public class Driver{
         else{
 		    String inp = args[0]; String out = args[1];
             int NUM_THREADS = Integer.parseInt(args[2]);
-            int DEBUG_VALUE = Integer.parseInt(args[3]);
+            int DEBUG_VAL = Integer.parseInt(args[3]);
+            System.out.println(inp+" " + out+" " +NUM_THREADS+ " " +DEBUG_VAL+"\n");
+            if(NUM_THREADS<1 || NUM_THREADS>3 || DEBUG_VAL < 0 || DEBUG_VAL > 4){
+                System.out.println("INCORRECT THREAD NUM OR DEBUG VAL");
+                System.exit(0);
+            }
             Logger l = new Logger();
-            l.setDebugValue(DEBUG_VALUE);
+            l.setDebugValue(DEBUG_VAL);
 
             FileProcessor fp = new FileProcessor();
             fp.openReader(inp);
             CreateWorkers c = new CreateWorkers(); 
-            c.startWorkers(fp);
+            c.startWorkers(fp,NUM_THREADS);
             fp.closeReader();
 
         }
