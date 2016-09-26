@@ -13,8 +13,11 @@ public class Results implements StdoutDisplayInterface {
 		studentList = Collections.synchronizedList(new ArrayList<Student>());
 		listNumber = 0;
 	}
-    // appropriate method to save results to the data structure
-	public void saveResults(Student student){
+	/**
+	 * method that save results to the data structure
+	 * param Student
+	 */
+	public synchronized void saveResults(Student student){
 		studentList.get(listNumber).setName(student.getName());
 		studentList.get(listNumber).setAssignedCourse1(student.getAssignedCourse1());
 		studentList.get(listNumber).setAssignedCourse2(student.getAssignedCourse2());
@@ -22,7 +25,7 @@ public class Results implements StdoutDisplayInterface {
 	}
 	
 	
-    public void writeSchedulesToScreen(){
+    public synchronized void writeSchedulesToScreen(){
     	System.out.println(studentList.get(listNumber).toString());
     	listNumber++;
     }
