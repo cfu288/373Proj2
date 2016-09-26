@@ -42,21 +42,25 @@ public class ObjectPool{
             Course tmp = new Course(names[i]);
             unlocked.put(names[i],tmp);
         }
-        /*System.out.println("SIZE OF unlocked: " + unlocked.size());
+
+    }
+    public synchronized void printUnlocked(){
+        System.out.println("SIZE OF unlocked: " + unlocked.size());
         for (String name: unlocked.keySet()){
             String key = name.toString();
             String value = unlocked.get(name).toString();  
             System.out.println(key + " " + value);  
-         }*/ 
-
+         } 
     }
-
     public synchronized Course aquire(String s){//checkout
         Course c;
         c = unlocked.get(s);
         if(c != null){
             locked.put(s,c);
             unlocked.remove(s);
+            //System.out.println(c.toString()+" has been aquired");
+        }else{
+            //System.out.println(c.toString()+" error");
         }
         return c;
     }
@@ -67,6 +71,9 @@ public class ObjectPool{
         if(c != null){
             unlocked.put(s,c);
             locked.remove(s);
+            //System.out.println(c.toString()+" has been released");
+        }else{
+            //System.out.println(c.toString()+" error");
         }
     }
 

@@ -1,6 +1,8 @@
 package primeThreads.driver;
 
 import primeThreads.util.*;
+import primeThreads.objects.*;
+import primeThreads.store.*;
 import primeThreads.threadMgmt.*;
 import java.io.BufferedReader;
 
@@ -24,10 +26,9 @@ public class Driver{
             fp.openReader(inp);
             CreateWorkers c = new CreateWorkers(); 
             Results r = new Results();
-            ObjectPool o = o.getInstance();
-            c.startWorkers(fp,NUM_THREADS,r,o);
+            ObjectPool o = ObjectPool.getInstance();
+            c.startWorkers(fp,NUM_THREADS,o,r);
             fp.closeReader();
-
         }
 	} // end main(...)
 

@@ -5,17 +5,18 @@ import primeThreads.store.*;
 public class WorkerThread implements Runnable  {
 	
 	private FileProcessor fileProcessor;
-	private Student student = null;
+	//private Student student = null;
 	private Results res = null;
+	private ObjectPool o = null;
 	//private ObjectPool;
    /**
     * Constructor
     */
-	public WorkerThread(FileProcessor fp//Object pool, Results rs
-			){
+	public WorkerThread(FileProcessor fp, ObjectPool op, Results rs){
 		fileProcessor = fp;
-		student = new Student();
-		//res = rs;
+		//student = new Student();
+		res = rs;
+        o = op;
     }
 	/**
 	 * 
@@ -23,21 +24,21 @@ public class WorkerThread implements Runnable  {
     public void run() {
    // 	try{
     		//Invoke a method in the FileProcessor to read one line as a string
-    		String[] studentInfo = fileProcessor.getStringArray();
-
-    		student.setName(studentInfo[0]);
-    		
-    		student.setPreferences(Integer.parseInt(studentInfo[1]), Integer.parseInt(studentInfo[2]),
-    			Integer.parseInt(studentInfo[3]), Integer.parseInt(studentInfo[4]));
-    		
+        String[] studentInfo = fileProcessor.getStringArray();
+        while(studentInfo!=null && studentInfo.length > 1 ){
+	        Student student = new Student();//create new student
+            //System.out.println("Length: "+studentInfo.length);
+            student.setName(studentInfo[0]);
+    		student.setPreferences(Integer.parseInt(studentInfo[1]), Integer.parseInt(studentInfo[2]), Integer.parseInt(studentInfo[3]), Integer.parseInt(studentInfo[4]));
     		student.printPreferences();
     		//Run your algorithm to assign courses to this student.
-       
-    		ObjectPool op = ObjectPool.getInstance();  
+    		ObjectPool op = o.getInstance();  
     		int initPref = 1;
     		while(initPref <= 4){
-    			Course newCourse = op.aquire(student.findPreference(initPref));
-    			//if(newCourse == null)System.out.println("NULL COURSE");
+                //op.printUnlocked();
+    			//System.out.println("current aquire: " + student.findPreference(initPref));
+                Course newCourse = op.aquire(student.findPreference(initPref));	
+                if(newCourse == null)System.out.println("NULL COURSE");
     			if(newCourse.getSpotsRemaining() > 0){
     				student.enroll(newCourse);
     				op.release(student.findPreference(initPref));
@@ -49,13 +50,14 @@ public class WorkerThread implements Runnable  {
     			}
     			
     		}
-    		
+            res.saveResults(student); //change to res
+            res.writeSchedulesToScreen(); //change to res
+            studentInfo = fileProcessor.getStringArray();
+    	}	
     		//Store the results in the data structure in the Results instance
        
             
-    		Results rs = new Results();
-            rs.saveResults(student); //change to res
-            rs.writeSchedulesToScreen(); //change to res
+    		//Results rs = new Results();
     //	}
     //	catch(InterruptedException exception){
     		

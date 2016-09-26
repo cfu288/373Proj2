@@ -146,7 +146,7 @@ public class Student{
 	public String findPreference(int rank){
 		String index = null;
 		for(int i = 0; i < Preferences.size(); i++){
-			if(Preferences.get(i) == rank){
+            if(Preferences.get(i) == rank){
 				index = names[i];
 			}
 		}
