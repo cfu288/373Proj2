@@ -12,14 +12,32 @@ import primeThreads.objects.Course;
     
 }*/
 
+/*Creating an ObjectPool to manage thread access to our courses. It uses the singleton pattern
+ * with double locking.
+ */
 public class ObjectPool{
-    //private hashtable of objects
-    //use hash since we look up by key, 0(1) lookup 
+    /* We use two hash tables, which give us near O(1) lookup when given the class name as a key.
+     * We use one to store all the current classes that are availible and not being used by another
+     * thread and the second hash table to store all of the 
+     */
 	private Hashtable<String, Course> unlocked = new Hashtable<String, Course>(); // 4 classes for
 	private Hashtable<String, Course> locked = new Hashtable<String, Course>(); // 4 classes for
     private String[] names = {"A", "B", "C", "D", "E", "F", "G"};
     
-    public ObjectPool(){
+    private volatile static ObjectPool uniqueInstance;
+    
+    public static ObjectPool getInstance(){
+        if(uniqueInstance == null){
+            synchronized(ObjectPool.class){
+                if(uniqueInstance == null){
+                    uniqueInstance = new ObjectPool();
+                }
+            }
+        }
+        return uniqueInstance;
+    }
+    
+    private ObjectPool(){
         for(int i =0;i < 4;i++){
             Course tmp = new Course(names[i]);
             unlocked.put(names[i],tmp);

@@ -29,7 +29,7 @@ public class WorkerThread implements Runnable  {
     		
     		student.printPreferences();
     		//Run your algorithm to assign courses to this student.
-            ObjectPool op = new ObjectPool();   	
+            ObjectPool op = ObjectPool.getInstance();   	
             Course c = op.aquire("A");
             if(c == null){System.out.println("NULL");}
             else{ System.out.println(c.toString());}
