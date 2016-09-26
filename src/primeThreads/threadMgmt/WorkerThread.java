@@ -1,18 +1,21 @@
 package primeThreads.threadMgmt;
 import primeThreads.objects.*;
 import primeThreads.util.*;
+import primeThreads.store.*;
 public class WorkerThread implements Runnable  {
 	
 	private FileProcessor fileProcessor;
 	private Student student = null;
+	private Results res = null;
 	//private ObjectPool;
    /**
     * Constructor
     */
-	public WorkerThread(FileProcessor fp//Object pool, 
+	public WorkerThread(FileProcessor fp//Object pool, Results rs
 			){
 		fileProcessor = fp;
 		student = new Student();
+		//res = rs;
     }
 	/**
 	 * 
@@ -29,31 +32,36 @@ public class WorkerThread implements Runnable  {
     		
     		student.printPreferences();
     		//Run your algorithm to assign courses to this student.
-            ObjectPool op = ObjectPool.getInstance();   	
-            Course c = op.aquire("A");
-            if(c == null){System.out.println("NULL");}
-            else{ System.out.println(c.toString());}
-            
-            Course d = op.aquire("A");
-            if(d == null){System.out.println("NULL");}
-            else{ System.out.println(d.toString());}
-            
-            op.release("A");
-            
-            d = op.aquire("A");
-            if(d == null){System.out.println("NULL");}
-            else{ System.out.println(d.toString());}
+       
+    		ObjectPool op = ObjectPool.getInstance();  
+    		int initPref = 1;
+    		while(initPref <= 4){
+    			Course newCourse = op.aquire(student.findPreference(initPref));
+    			//if(newCourse == null)System.out.println("NULL COURSE");
+    			if(newCourse.getSpotsRemaining() > 0){
+    				student.enroll(newCourse);
+    				op.release(student.findPreference(initPref));
+    				initPref++;
+    			}
+    			else{
+    				op.release(student.findPreference(initPref));
+    				initPref++;
+    			}
+    			
+    		}
+    		
     		//Store the results in the data structure in the Results instance
-    		//Results.saveCourses(student);
+       
+            
+    		Results rs = new Results();
+            rs.saveResults(student); //change to res
+            rs.writeSchedulesToScreen(); //change to res
     //	}
     //	catch(InterruptedException exception){
     		
    // 	}
     }
    
-    
-    
-    
     
     /*
 	 * assign courses according to the students preferences.

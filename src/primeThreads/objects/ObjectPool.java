@@ -69,7 +69,6 @@ public class ObjectPool{
             locked.remove(s);
         }
     }
-    
 
     public String toString() {
 		return "Objpool";
