@@ -1,5 +1,6 @@
 package primeThreads.objects;
 import java.util.Vector;
+import java.lang.Object.*;
 
 public class Student{
 	
@@ -118,6 +119,9 @@ public class Student{
 		return TotalPreference;
 	}
 
+	public void increaseTotalPreference(int in){
+		TotalPreference += in;
+	}
 	/*
 	 * setter assign preferences
 	 * @param int
@@ -153,6 +157,28 @@ public class Student{
 		return index;
 	}
 	
+	/**
+	 * Finds preference value looking at the name of the class
+	 */
+	public int getRank(String name){
+		int num = 0;
+		for(int i =0; i < names.length; i++){
+			if(names[i] == name){
+				num = i;
+			}
+		}
+		return Preferences.get(num);
+	}
+	
+	/**
+	 * student has all courses
+	 */
+	public int hasAllCourses(){
+		if(AssignedCourse1 != null && AssignedCourse2 != null && AssignedCourse3 != null){
+			return 1;
+		}
+		return 0;
+	}
 	
     /*
      * Formatted String

@@ -53,7 +53,7 @@
         <java jar="${BUILD}/jar/primeThreads.jar"  fork="true">
 		<arg value="input.txt"/>
 		<arg value="output.txt"/>
-		<arg value="3"/>
+		<arg value="1"/>
 		<arg value="1"/>
         </java>
 	
