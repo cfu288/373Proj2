@@ -32,7 +32,7 @@ public class WorkerThread implements Runnable  {
             //System.out.println("Length: "+studentInfo.length);
             student.setName(studentInfo[0]);
     		student.setPreferences(Integer.parseInt(studentInfo[1]), Integer.parseInt(studentInfo[2]), Integer.parseInt(studentInfo[3]), Integer.parseInt(studentInfo[4]));
-    		student.printPreferences();
+    	//	student.printPreferences();
     		//Run your algorithm to assign courses to this student.
        
     		ObjectPool op = ObjectPool.getInstance();  
@@ -48,14 +48,15 @@ public class WorkerThread implements Runnable  {
     			} 
     			op.release(className);
     		}
-            res.saveResults(student); //change to res
-            res.writeSchedulesToScreen(); //change to res
+    		//Store the results in the data structure in the Results instance
+            res.saveResults(student); 
+             
             studentInfo = fileProcessor.getStringArray();
     	}	
-    		//Store the results in the data structure in the Results instance
+        res.writeSchedulesToScreen();
        
 
-		//Results rs = new Results();
+		
     //	}
     //	catch(InterruptedException exception){
     		

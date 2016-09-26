@@ -158,19 +158,6 @@ public class Student{
 	}
 	
 	/**
-	 * Finds preference value looking at the name of the class
-	 */
-	/*public int getRank(String name){
-		int num = 0;
-		for(int i =0; i < names.length; i++){
-			if(names[i] == name){
-				num = i;
-			}
-		}
-		return Preferences.get(num);
-	}*/
-	
-	/**
 	 * student has all courses
 	 */
 	public int hasAllCourses(){

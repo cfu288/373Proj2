@@ -20,12 +20,14 @@ public class Results implements StdoutDisplayInterface {
 	 */
 	public synchronized void saveResults(Student student){
 		studentList.add(listNumber, student);
+		listNumber++;
     }
 	
 	
     public synchronized void writeSchedulesToScreen(){
-    	System.out.println(studentList.get(listNumber).toString());
-    	listNumber++;
+    	for(int i = 0; i < studentList.size(); i++){
+    		System.out.println(studentList.get(i).toString());
+    	}
     }
 } 
 
