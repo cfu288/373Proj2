@@ -21,7 +21,7 @@ public class Student{
 	//Total preference score field
 	private int TotalPreference;
 	
-	/*
+	/**
 	 * default constructor
 	 */
 	public Student(){
@@ -34,7 +34,7 @@ public class Student{
 		TotalPreference = 0;
 	}
 	
-	/*
+	/**
 	 * Name setter 
 	 * @return string
 	 */
@@ -42,7 +42,7 @@ public class Student{
 		return Name;
 	}
 	
-	/*
+	/**
 	 * Name setter
 	 * @param string
 	 */
@@ -54,7 +54,7 @@ public class Student{
 		return AssignedCourse1;
 	}
 	
-	/*
+	/**
 	 * set course 1 for a student 
 	 * @param Course
 	 */
@@ -111,7 +111,8 @@ public class Student{
 			setAssignedCourse5(c);
 		} */
 	}
-	/*
+	
+	/**
 	 * getter for student's total preference
 	 * @return int
 	 */
@@ -119,10 +120,14 @@ public class Student{
 		return TotalPreference;
 	}
 
+	/**
+	 * increases the total preference variable
+	 */
 	public void increaseTotalPreference(int in){
 		TotalPreference += in;
 	}
-	/*
+	
+	/**
 	 * setter assign preferences
 	 * @param int
 	 * @param int
@@ -136,7 +141,7 @@ public class Student{
 		Preferences.insertElementAt(pD, 3); 
 	}
 	
-	/*
+	/**
 	 * print references for debugging purposes
 	 */
 	public void printPreferences(){
@@ -147,6 +152,10 @@ public class Student{
 		System.out.println(Preferences.get(3));
 	}
     
+	/**
+	 * Finds the course name using the preference ranking
+	 * @return String
+	 */
 	public String findPreference(int rank){
 		String index = null;
 		for(int i = 0; i < Preferences.size(); i++){
@@ -158,7 +167,8 @@ public class Student{
 	}
 	
 	/**
-	 * student has all courses
+	 * Check if student has all courses
+	 * @return int
 	 */
 	public int hasAllCourses(){
 		if(AssignedCourse1 != null && AssignedCourse2 != null && AssignedCourse3 != null){
@@ -167,7 +177,7 @@ public class Student{
 		return 0;
 	}
 	
-    /*
+    /**
      * Formatted String
      * @return string
      * @see java.lang.Object#toString()
