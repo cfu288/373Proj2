@@ -54,10 +54,8 @@ public class WorkerThread implements Runnable  {
     		}
     		//Store the results in the data structure in the Results instance
             res.saveResults(student); 
-             
             studentInfo = fileProcessor.getStringArray();
     	}	
-        res.writeSchedulesToScreen();
        
 
 		
