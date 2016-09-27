@@ -77,6 +77,22 @@ public class ObjectPool{
         }
     }
 
+    /**
+     * Checks if there is remaining spots in the class
+     * @param Course
+     */
+    public synchronized int checkAvailability(Course c){
+    		return c.getSpotsRemaining();
+    }
+    
+    /**
+     * increment current number of students in class
+     * @param Course
+     */
+    public synchronized void addStudent(Course c){
+    	c.addAStudentToCourse();
+    }
+    
     public String toString() {
 		return "Objpool";
 	}
