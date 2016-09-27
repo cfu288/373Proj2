@@ -23,7 +23,7 @@ public class ObjectPool{
 	private Hashtable<String, Course> unlocked = new Hashtable<String, Course>(); // 4 classes for
 	private Hashtable<String, Course> locked = new Hashtable<String, Course>(); // 4 classes for
     private String[] names = {"A", "B", "C", "D", "E", "F", "G"};
-    private NUM_CLASSES = 7; 
+    private int NUM_CLASSES = 7; 
     private volatile static ObjectPool uniqueInstance;
     
     public static ObjectPool getInstance(){

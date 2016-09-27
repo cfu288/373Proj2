@@ -22,8 +22,6 @@ public class FileProcessor {
 			fileReader = new FileReader(fileName);
 			// Always wrap FileReader in BufferedReader.
 			br = new BufferedReader(fileReader);
-			
-			
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 			System.exit(0);
@@ -66,8 +64,13 @@ public class FileProcessor {
 	 */
 	public String[] getStringArray(){
 		String str = getLine();
-		String[] splittedLine = str.split("\\s+");
-		return splittedLine;
+		if (str!= null){
+            String[] splittedLine = str.split("\\s+");
+		    return splittedLine;
+        }else{
+            System.out.println("ERR");
+            return null; 
+        }
 	}
 	
 	/**
