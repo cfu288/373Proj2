@@ -62,13 +62,12 @@ public class FileProcessor {
 	 * @param bufferedReader BufferedReader 
 	 * @return splittedLine array of Strings
 	 */
-	public String[] getStringArray(){
+	public synchronized String[] getStringArray(){
 		String str = getLine();
 		if (str!= null){
             String[] splittedLine = str.split("\\s+");
 		    return splittedLine;
         }else{
-            System.out.println("ERR");
             return null; 
         }
 	}

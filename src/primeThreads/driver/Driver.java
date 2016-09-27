@@ -29,6 +29,7 @@ public class Driver{
             ObjectPool o = ObjectPool.getInstance();
             c.startWorkers(fp,NUM_THREADS,o,r);
             fp.closeReader();
+            r.writeSchedulesToScreen();
         }
 	} // end main(...)
 
