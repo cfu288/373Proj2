@@ -20,16 +20,18 @@ public class Driver{
                 System.exit(0);
             }
             //CALLING CREATEWORKERS, INSTANTIATING CLASSES
-            Logger l = new Logger();
+            Logger l = new Logger();//implement 4, constructor is called
             l.setDebugValue(DEBUG_VAL);
             FileProcessor fp = new FileProcessor();
             fp.openReader(inp);
-            CreateWorkers c = new CreateWorkers(); 
-            Results r = new Results();
+            CreateWorkers c = new CreateWorkers();//implement 3, run method is called
+            Results r = new Results(l);//implement 2, entry is added to results
             ObjectPool o = ObjectPool.getInstance();
-            c.startWorkers(fp,NUM_THREADS,o,r);
+            c.startWorkers(fp,NUM_THREADS,o,r,l);
             fp.closeReader();
-            r.writeSchedulesToScreen();
+            l.writeMessage(r.schedulesToString(),1);
+            l.writeMessage(r.averageToString(),0);
+
         }
 	} // end main(...)
 

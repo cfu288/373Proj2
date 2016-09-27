@@ -10,24 +10,25 @@ public class WorkerThread implements Runnable  {
 	private Student student = null;
 	private Results res = null;
 	private ObjectPool o = null;
+    private Logger log = null;
     private int NUM_CLASSES = 7;
     /**
     * Constructor
     */
-	public WorkerThread(FileProcessor fp, ObjectPool op, Results rs){
+	public WorkerThread(FileProcessor fp, ObjectPool op, Results rs, Logger l){
 		fileProcessor = fp;
-		//student = new Student();
 		res = rs;
         o = op;
+        log = l;
     }
 	/**
 	 * 
 	 */
     public void run() {
+        log.writeMessage("run() called",3);
    // 	try{
     		//Invoke a method in the FileProcessor to read one line as a string
         String[] studentInfo = fileProcessor.getStringArray();
-        //System.out.println("Length: "+studentInfo.length);
         while(studentInfo!=null && studentInfo.length > 1 ){
 	        Student student = new Student();//create new student
             student.setName(studentInfo[0]);
@@ -36,9 +37,9 @@ public class WorkerThread implements Runnable  {
                             Integer.parseInt(studentInfo[3]), Integer.parseInt(studentInfo[4]),  
                             Integer.parseInt(studentInfo[5]), Integer.parseInt(studentInfo[6]),
                             Integer.parseInt(studentInfo[7]));
-    	//	student.printPreferences();
-    		//Run your algorithm to assign courses to this student.
-       
+    	    //student.printPreferences();
+    		
+            //Run your algorithm to assign courses to this student.
     		ObjectPool op = ObjectPool.getInstance();  
     		for(int initPref = 1; initPref <= NUM_CLASSES && (student.hasAllCourses() == 0); initPref++){
     			String className = student.findPreference(initPref);
