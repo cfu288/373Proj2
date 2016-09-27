@@ -25,9 +25,12 @@ public class Results implements StdoutDisplayInterface {
 	
 	
     public synchronized void writeSchedulesToScreen(){
-    	for(int i = 0; i < studentList.size(); i++){
-    		System.out.println(studentList.get(i).toString());
+    	int avrg = 0;
+    	for(Student stud : studentList){
+    		System.out.println(stud.toString());
+    		avrg += stud.getTotalPreference();
     	}
+    	System.out.println("Average preference_score is: " +  avrg/(studentList.size()));
     }
 } 
 
