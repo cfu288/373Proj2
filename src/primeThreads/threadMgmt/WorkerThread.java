@@ -44,9 +44,9 @@ public class WorkerThread implements Runnable  {
     			String className = student.findPreference(initPref);
     			Course newCourse = op.aquire(className);
     			
-    			if(newCourse.getSpotsRemaining() > 0){
+    			if(op.checkAvailability(newCourse) > 0){
     				student.enroll(newCourse);
-    				newCourse.addAStudentToCourse();
+    				op.addStudent(newCourse);
     				student.increaseTotalPreference(initPref);
     				
     			} 
