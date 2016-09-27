@@ -13,7 +13,7 @@ public class Course{
 	 */
 	public Course() {
 		name = "";
-		capacity =  10;
+		capacity =  60;
 		currentNumber = 0;
 	}
 	
@@ -24,7 +24,7 @@ public class Course{
 	public Course(String name) {
 		super();
 		this.name = name;
-		this.capacity = 10;
+		this.capacity = 60;
 		this.currentNumber = 0;
 	}
 	

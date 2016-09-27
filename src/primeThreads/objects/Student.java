@@ -8,7 +8,7 @@ public class Student{
 	private String Name;
 	
 	//List that contains preferences of Student
-	private Vector<Integer> Preferences = new Vector<Integer>(4);
+	private Vector<Integer> Preferences = new Vector<Integer>(7);
 	private String[] names = {"A", "B", "C", "D", "E", "F", "G"};
 	
 	//assigned courses 
@@ -104,12 +104,12 @@ public class Student{
 		else if(AssignedCourse3 == null){
 			setAssignedCourse3(c);
 		}
-	/*	else if(AssignedCourse4 == null){
+		else if(AssignedCourse4 == null){
 			setAssignedCourse4(c);
 		}
 		else{
 			setAssignedCourse5(c);
-		} */
+		} 
 	}
 	/*
 	 * getter for student's total preference
@@ -129,11 +129,14 @@ public class Student{
 	 * @param int
 	 * @param int
 	 */
-	public void setPreferences(int pA, int pB, int pC, int pD){
+	public void setPreferences(int pA, int pB, int pC, int pD, int pE, int pF, int pG){
 		Preferences.insertElementAt(pA, 0); 
 		Preferences.insertElementAt(pB, 1);
 		Preferences.insertElementAt(pC, 2); 
 		Preferences.insertElementAt(pD, 3); 
+		Preferences.insertElementAt(pE, 4); 
+		Preferences.insertElementAt(pF, 5); 
+		Preferences.insertElementAt(pG, 6); 
 	}
 	
 	/*
@@ -144,7 +147,10 @@ public class Student{
 		System.out.print(Preferences.get(0) + " ");
 		System.out.print(Preferences.get(1) + " ");
 		System.out.print(Preferences.get(2) + " ");
-		System.out.println(Preferences.get(3));
+		System.out.print(Preferences.get(3) + " ");
+		System.out.print(Preferences.get(4) + " ");
+		System.out.print(Preferences.get(5) + " ");
+		System.out.println(Preferences.get(7));
 	}
     
 	public String findPreference(int rank){
@@ -161,7 +167,7 @@ public class Student{
 	 * student has all courses
 	 */
 	public int hasAllCourses(){
-		if(AssignedCourse1 != null && AssignedCourse2 != null && AssignedCourse3 != null){
+		if(AssignedCourse1 != null && AssignedCourse2 != null && AssignedCourse3 != null && AssignedCourse4 != null && AssignedCourse5 != null){
 			return 1;
 		}
 		return 0;
@@ -174,7 +180,7 @@ public class Student{
      */
 	@Override
 	public String toString() {
-		return Name + " "+ AssignedCourse1.toString() + " " + AssignedCourse2.toString() + " "+ AssignedCourse3.toString() + " " + TotalPreference;
+		return Name + " "+ AssignedCourse1.toString() + " " + AssignedCourse2.toString() + " "+ AssignedCourse3.toString() + " " + AssignedCourse2.toString() + " "+ AssignedCourse3.toString() + " " + TotalPreference;
 	}
 	
 }
