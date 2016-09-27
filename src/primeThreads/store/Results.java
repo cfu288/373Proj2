@@ -33,7 +33,7 @@ public class Results implements StdoutDisplayInterface {
 	 * Outputs results to the console
 	 */
     public synchronized void writeSchedulesToScreen(){
-    	int avrg = 0;
+    	float avrg = 0;
     	for(Student stud : studentList){
     		System.out.println(stud.toString());
     		avrg += stud.getTotalPreference();
