@@ -27,7 +27,7 @@ public class WorkerThread implements Runnable  {
    // 	try{
     		//Invoke a method in the FileProcessor to read one line as a string
         String[] studentInfo = fileProcessor.getStringArray();
-        System.out.println("Length: "+studentInfo.length);
+        //System.out.println("Length: "+studentInfo.length);
         while(studentInfo!=null && studentInfo.length > 1 ){
 	        Student student = new Student();//create new student
             student.setName(studentInfo[0]);
@@ -43,21 +43,18 @@ public class WorkerThread implements Runnable  {
     		for(int initPref = 1; initPref <= NUM_CLASSES && (student.hasAllCourses() == 0); initPref++){
     			String className = student.findPreference(initPref);
     			Course newCourse = op.aquire(className);
-    			
     			if(newCourse.getSpotsRemaining() > 0){
     				student.enroll(newCourse);
     				newCourse.addAStudentToCourse();
     				student.increaseTotalPreference(initPref);
-    				
     			} 
     			op.release(className);
     		}
     		//Store the results in the data structure in the Results instance
             res.saveResults(student); 
-             
             studentInfo = fileProcessor.getStringArray();
     	}	
-        res.writeSchedulesToScreen();
+        //res.writeSchedulesToScreen();
        
 
 		
