@@ -54,7 +54,7 @@
 		<arg value="input.txt"/>
 		<arg value="output.txt"/>
 		<arg value="3"/>
-		<arg value="1"/>
+		<arg value="0"/>
         </java>
 	
     </target>

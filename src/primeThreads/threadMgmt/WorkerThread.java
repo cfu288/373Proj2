@@ -3,7 +3,6 @@ import primeThreads.objects.*;
 import primeThreads.util.*;
 import primeThreads.store.*;
 
-
 public class WorkerThread implements Runnable  {
 	
 	private FileProcessor fileProcessor;
@@ -44,12 +43,13 @@ public class WorkerThread implements Runnable  {
     		for(int initPref = 1; initPref <= NUM_CLASSES && (student.hasAllCourses() == 0); initPref++){
     			String className = student.findPreference(initPref);
     			Course newCourse = op.aquire(className);
-    			
+    			if(newCourse != null){
     			if(op.checkAvailability(newCourse) > 0){
     				student.enroll(newCourse);
     				op.addStudent(newCourse);
     				student.increaseTotalPreference(initPref);
     			} 
+                }else System.out.println("NULL" );
     			op.release(className);
     		}
     		//Store the results in the data structure in the Results instance
@@ -58,5 +58,4 @@ public class WorkerThread implements Runnable  {
     	}	
     	//}catch(InterruptedException e){System.out.println("inturrupt: " + e);}
     }
-  
     } 

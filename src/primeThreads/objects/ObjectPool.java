@@ -2,6 +2,7 @@ package primeThreads.objects;
 
 import java.util.Hashtable;
 import primeThreads.objects.Course;
+import java.lang.InterruptedException;
 
 /*public abstract class ObjectPool{
 	
@@ -15,6 +16,7 @@ import primeThreads.objects.Course;
 /*Creating an ObjectPool to manage thread access to our courses. It uses the singleton pattern
  * with double locking.
  */
+
 public class ObjectPool{
     /* We use two hash tables, which give us near O(1) lookup when given the class name as a key.
      * We use one to store all the current classes that are availible and not being used by another
@@ -52,29 +54,27 @@ public class ObjectPool{
             System.out.println(key + " " + value);  
          } 
     }
-    public synchronized Course aquire(String s){//checkout
+    public synchronized Course aquire(String s) throws InterruptedException{//oheckout
         Course c;
-        c = unlocked.get(s);
-        if(c != null){
-            locked.put(s,c);
-            unlocked.remove(s);
-            //System.out.println(c.toString()+" has been aquired");
-        }else{
-            //System.out.println(c.toString()+" error");
+        while(unlocked.get(s) == null){
+            wait();
         }
+        c = unlocked.get(s);
+        locked.put(s,c);
+        unlocked.remove(s);
+        notify();
         return c;
     }
     
-    public synchronized void release(String s){
+    public synchronized void release(String s) throws InterruptedException{
         Course c;
-        c = locked.get(s);
-        if(c != null){
-            unlocked.put(s,c);
-            locked.remove(s);
-            //System.out.println(c.toString()+" has been released");
-        }else{
-            //System.out.println(c.toString()+" error");
+        while(locked.get(s) == null){
+            wait();
         }
+        c = locked.get(s);
+        unlocked.put(s,c);
+        locked.remove(s);
+        notify();
     }
 
     /**
