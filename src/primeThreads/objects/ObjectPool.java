@@ -82,7 +82,11 @@ public class ObjectPool{
      * @param Course
      */
     public synchronized int checkAvailability(Course c){
-    		return c.getSpotsRemaining();
+     	/*if(c == null){
+    		System.out.println("iu error");
+    		return 2;
+    	} */
+    	return c.getSpotsRemaining();
     }
     
     /**
