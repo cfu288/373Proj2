@@ -1,6 +1,7 @@
 package primeThreads.store;
-import primeThreads.objects.*;
-import primeThreads.util.*;
+
+import primeThreads.objects.Student;
+import primeThreads.util.Logger;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -15,7 +16,7 @@ public class Results implements StdoutDisplayInterface {
 	private Logger log;
 	
 	/**
-	 * default constructor
+	 * Default constructor
 	 */
 	public Results(Logger l){
 		studentList = Collections.synchronizedList(new ArrayList<Student>(81));
@@ -24,8 +25,8 @@ public class Results implements StdoutDisplayInterface {
 	}
 	
 	/**
-	 * method that save results to the data structure
-	 * @param Student
+	 * Method that saves results to the data structure
+	 * @param   Student Student to save to ds
 	 */
 	public synchronized void saveResults(Student student){
 		studentList.add(listNumber, student);
@@ -47,8 +48,9 @@ public class Results implements StdoutDisplayInterface {
     }
     
     /**
-	 * Returns average string
-	 */
+	* Returns average string
+    * @return String    String with average
+    */
     public synchronized String averageToString(){
     	float avrg = 0;
     	for(Student stud : studentList){
@@ -58,6 +60,10 @@ public class Results implements StdoutDisplayInterface {
         return ret;
     }
     
+    /**
+    * Returns schedules in string format 
+    * @return String    Schedules list and average
+    */
     public synchronized String schedulesToString(){
     	float avrg = 0;
         String str = "";
@@ -68,7 +74,4 @@ public class Results implements StdoutDisplayInterface {
     	str += "Average preference_score is: " +  avrg/(studentList.size());
         return str;
     }
-
 } 
-
-
