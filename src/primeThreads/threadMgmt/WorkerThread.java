@@ -25,9 +25,9 @@ public class WorkerThread implements Runnable  {
 	 * 
 	 */
     public void run() {
-        log.writeMessage("run() called",3);
-   // 	try{
+    	//try{
     		//Invoke a method in the FileProcessor to read one line as a string
+        log.writeMessage("run() called",3);
         String[] studentInfo = fileProcessor.getStringArray();
         while(studentInfo!=null && studentInfo.length > 1 ){
 	        Student student = new Student();//create new student
@@ -56,13 +56,7 @@ public class WorkerThread implements Runnable  {
             res.saveResults(student); 
             studentInfo = fileProcessor.getStringArray();
     	}	
-       
-
-		
-    //	}
-    //	catch(InterruptedException exception){
-    		
-   // 	}
+    	//}catch(InterruptedException e){System.out.println("inturrupt: " + e);}
     }
   
     } 

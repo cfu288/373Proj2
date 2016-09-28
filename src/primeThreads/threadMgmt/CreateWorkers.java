@@ -19,9 +19,7 @@ public class CreateWorkers  {
         for(int n = 0; n < NUM_THREADS; n++){
             try{
                 threads[n].join();
-            }catch(InterruptedException e){
-                System.out.println("Interruped in CreateWorker: " + e);
-            }   
+            }catch(InterruptedException e){System.out.println("Interruped in CreateWorker: " + e);}   
         }
     }
 
