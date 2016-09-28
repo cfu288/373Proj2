@@ -1,5 +1,7 @@
 package primeThreads.store;
-import primeThreads.objects.*;
+
+import primeThreads.objects.Student;
+import primeThreads.util.Logger;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -11,25 +13,29 @@ public class Results implements StdoutDisplayInterface {
 	private List<Student> studentList;
 	// serves a incrementing iterator for the studentList 
 	private int listNumber;
+	private Logger log;
 	
 	/**
-	 * default constructor
+	 * Default constructor
 	 */
-	public Results(){
+	public Results(Logger l){
 		studentList = Collections.synchronizedList(new ArrayList<Student>(81));
 		listNumber = 0;
+        Logger log = l;
 	}
 	
 	/**
-	 * method that save results to the data structure
-	 * @param Student
+	 * Method that saves results to the data structure
+	 * @param   Student Student to save to ds
 	 */
 	public synchronized void saveResults(Student student){
 		studentList.add(listNumber, student);
 		listNumber++;
+        String s = "Student " + listNumber + " saved";
+        log.writeMessage(s,2);
     }
 	
-	/**
+    /**
 	 * Outputs results to the console
 	 */
     public synchronized void writeSchedulesToScreen(){
@@ -40,6 +46,32 @@ public class Results implements StdoutDisplayInterface {
     	}
     	System.out.println("Average preference_score is: " +  avrg/(studentList.size()));
     }
+    
+    /**
+	* Returns average string
+    * @return String    String with average
+    */
+    public synchronized String averageToString(){
+    	float avrg = 0;
+    	for(Student stud : studentList){
+    		avrg += stud.getTotalPreference();
+    	}
+    	String ret = "Average preference_score is: " +  String.valueOf(avrg/(studentList.size()));
+        return ret;
+    }
+    
+    /**
+    * Returns schedules in string format 
+    * @return String    Schedules list and average
+    */
+    public synchronized String schedulesToString(){
+    	float avrg = 0;
+        String str = "";
+    	for(Student stud : studentList){
+    		str = str + stud.toString() + "\n";
+    		avrg += stud.getTotalPreference();
+    	}
+    	str += "Average preference_score is: " +  avrg/(studentList.size());
+        return str;
+    }
 } 
-
-
