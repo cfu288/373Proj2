@@ -48,7 +48,7 @@
            deprecation="off"/>
   </target>
 
-<target name="run" depends="jar">
+<target name="run0" depends="jar">
         <java jar="${BUILD}/jar/primeThreads.jar"  fork="true">
 		<arg value="input.txt"/>
 		<arg value="output.txt"/>
@@ -92,6 +92,17 @@
 		<arg value="4"/>
         </java>
 </target>
+
+<target name="run" depends="jar">
+        <java jar="${BUILD}/jar/primeThreads.jar"  fork="true">
+                <arg value="${arg0}"/>
+                <arg value="${arg1}"/>
+		<arg value="${arg2}"/>
+                <arg value="${arg3}"/>
+        </java>
+    </target>
+
+
 <target name="tarzip" > 
 	    <delete file="./firstName_lastName_assign2.tar" quiet="true" /> 
 	    <tar destfile="${BUILD}/dist/firstName_lastName_assign2.tar.gz" basedir="../../" compression="gzip"/>
