@@ -12,7 +12,7 @@ public class WorkerThread implements Runnable  {
 	private FileProcessor fileProcessor;
 	private Student student = null;
 	private Results res = null;
-	private ObjectPool o = null;
+	private SuperObjectPool o = null;
     private Logger log = null;
     private int NUM_CLASSES = 7;
     /**
@@ -23,7 +23,6 @@ public class WorkerThread implements Runnable  {
 		res = rs;
         o = op;
         log = l;
-	log.writeMessage("Worker thread constructed",4);
     }
 	/**
 	 * Runs thread. Reads in line from file, processes student, assigns them
@@ -35,7 +34,6 @@ public class WorkerThread implements Runnable  {
         String[] studentInfo = fileProcessor.getStringArray();
         while(studentInfo!=null && studentInfo.length > 1 ){
 	        Student student = new Student();
-		log.writeMessage("Student constructed",4);
             student.setName(studentInfo[0]);
     		student.setPreferences(
                             Integer.parseInt(studentInfo[1]), Integer.parseInt(studentInfo[2]), 

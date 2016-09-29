@@ -21,7 +21,8 @@ public class Results implements StdoutDisplayInterface {
 	public Results(Logger l){
 		studentList = Collections.synchronizedList(new ArrayList<Student>(81));
 		listNumber = 0;
-        Logger log = l;
+        	Logger log = l;
+		log.writeMessage("Results constructed",4);
 	}
 	
 	/**
