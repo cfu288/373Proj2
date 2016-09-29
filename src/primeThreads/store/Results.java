@@ -11,7 +11,7 @@ public class Results implements StdoutDisplayInterface {
 	
     // appropriate data structure as private data member
 	private List<Student> studentList;
-	// serves a incrementing iterator for the studentList 
+	// serves as an incrementing iterator for the studentList 
 	private int listNumber;
 	private Logger log;
 	

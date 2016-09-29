@@ -53,7 +53,7 @@
 		<arg value="input.txt"/>
 		<arg value="output.txt"/>
 		<arg value="3"/>
-		<arg value="0"/>
+		<arg value="3"/>
         </java>
 </target>
 
