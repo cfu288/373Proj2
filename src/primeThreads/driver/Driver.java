@@ -4,8 +4,10 @@ import primeThreads.util.FileProcessor;
 import primeThreads.util.Logger;
 import primeThreads.objects.Course;
 import primeThreads.objects.ObjectPool;
+import primeThreads.objects.SuperObjectPool;
 import primeThreads.objects.Student;
 import primeThreads.store.Results;
+import primeThreads.store.StdoutDisplayInterface;
 import primeThreads.threadMgmt.CreateWorkers;
 import primeThreads.threadMgmt.WorkerThread;
 import java.io.BufferedReader;
@@ -29,12 +31,13 @@ public class Driver{
             FileProcessor fp = new FileProcessor();
             fp.openReader(inp);
             CreateWorkers c = new CreateWorkers();
-            Results r = new Results(l);
+            Results r= new Results(l);
             ObjectPool o = ObjectPool.getInstance();
             c.startWorkers(fp,NUM_THREADS,o,r,l);
             fp.closeReader();
             l.writeMessage(r.schedulesToString(),1);
             l.writeMessage(r.averageToString(),0);
+            l.close();
         }
 	}
 }

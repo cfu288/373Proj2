@@ -2,22 +2,14 @@ package primeThreads.objects;
 
 import java.util.Hashtable;
 import primeThreads.objects.Course;
+import primeThreads.objects.SuperObjectPool;
 import java.lang.InterruptedException;
-
-/*public abstract class ObjectPool{
-	
-    private Hashtable locked, unlocked;
-    public synchronized <T> aquire(String s); 
-    public synchronized void release(String s); 
-    public String toString();
-    
-}*/
 
 /* Creating an ObjectPool to manage thread access to our courses. 
  * It uses the singleton pattern with double locking.
  */
 
-public class ObjectPool{
+public class ObjectPool extends SuperObjectPool{
     /* We use two hash tables, which give us near O(1) lookup when given 
      * the class name as a key. We use one to store all the current classes 
      * that are availible and not used by another thread and the second hash 
