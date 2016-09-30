@@ -10,6 +10,7 @@ import primeThreads.store.Results;
 import primeThreads.store.StdoutDisplayInterface;
 import primeThreads.threadMgmt.CreateWorkers;
 import primeThreads.threadMgmt.WorkerThread;
+import java.lang.NumberFormatException;
 import java.io.BufferedReader;
 
 public class Driver{
@@ -18,8 +19,15 @@ public class Driver{
         else{
             //COMMAND LINE ARG PARSING AND VERIFICATION
             String inp = args[0]; String out = args[1];
-            int NUM_THREADS = Integer.parseInt(args[2]);
-            int DEBUG_VAL = Integer.parseInt(args[3]);
+            int NUM_THREADS = 0;
+            int DEBUG_VAL = 0;
+            try{
+                NUM_THREADS = Integer.parseInt(args[2]);
+                DEBUG_VAL = Integer.parseInt(args[3]);
+            }catch(NumberFormatException e){
+                System.out.println("NOT A NUMBER: " + e); 
+                System.exit(0);
+            }
             System.out.println(inp+" " + out+" " +NUM_THREADS+ " " +DEBUG_VAL+"\n");
             if(NUM_THREADS<1 || NUM_THREADS>3 || DEBUG_VAL < 0 || DEBUG_VAL > 4){
                 System.out.println("INCORRECT THREAD NUM OR DEBUG VAL");
