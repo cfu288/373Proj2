@@ -105,7 +105,7 @@
 
 <target name="tarzip" > 
 	    <delete file="./firstName_lastName_assign2.tar" quiet="true" /> 
-	    <tar destfile="${BUILD}/dist/firstName_lastName_assign2.tar.gz" basedir="../../" compression="gzip"/>
+	    <tar destfile="$../../christopher_fu_mariuxi_yagual_assign2.tar.gz" basedir="../" compression="gzip"/>
 </target>
 
 </project>
