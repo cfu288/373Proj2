@@ -17,7 +17,7 @@ public class Driver{
         if(args.length < 3) System.out.println("INCORRECT ARGS(4)");
         else{
             //COMMAND LINE ARG PARSING AND VERIFICATION
-		    String inp = args[0]; String out = args[1];
+            String inp = args[0]; String out = args[1];
             int NUM_THREADS = Integer.parseInt(args[2]);
             int DEBUG_VAL = Integer.parseInt(args[3]);
             System.out.println(inp+" " + out+" " +NUM_THREADS+ " " +DEBUG_VAL+"\n");
@@ -32,12 +32,12 @@ public class Driver{
             fp.openReader(inp);
             CreateWorkers c = new CreateWorkers();
             Results r= new Results(l);
-            ObjectPool o = ObjectPool.getInstance();
+            SuperObjectPool o = ObjectPool.getInstance();
             c.startWorkers(fp,NUM_THREADS,o,r,l);
             fp.closeReader();
             l.writeMessage(r.schedulesToString(),1);
             l.writeMessage(r.averageToString(),0);
             l.close();
         }
-	}
+    }
 }

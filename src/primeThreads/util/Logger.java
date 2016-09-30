@@ -10,7 +10,10 @@ import java.io.FileWriter;
 public class Logger{
     private static int debugLevel;
     private static BufferedWriter writer = null;
-
+    
+    /**
+    * Constructor
+    */
     public Logger(){
         FileWriter fileWriter;
         try{
@@ -21,18 +24,27 @@ public class Logger{
             System.exit(0);
         }
     }
-
+    
+    /**
+    * Sets debug value
+    */
     public static void setDebugValue (int levelIn) {
 	    debugLevel = levelIn;
     }
     
+    /**
+    * Prints to screen and saves to log file if matches debug value
+    */
     public static void writeMessage (String message, int levelIn) {
 	   if (levelIn == debugLevel){
 	        System.out.println(message);
-		writeOutput(message);
-           }
+		    writeOutput(message);
+        }
     }
-
+    
+    /**
+    * Closes the open file
+    */
     public static void close(){
        	try{            
             writer.close();
@@ -43,6 +55,9 @@ public class Logger{
     }
     
     //http://stackoverflow.com/questions/2885173/how-to-create-a-file-and-write-to-a-file-in-java
+    /**
+    * Writes to file
+    */
     public static void writeOutput(String message){
        	try{            
             writer.write(message);
@@ -53,6 +68,9 @@ public class Logger{
         }
     }
 
+    /**
+    * Logger toString
+    */
     public String toString(){
         return "Debug Level is " + debugLevel;
     }
