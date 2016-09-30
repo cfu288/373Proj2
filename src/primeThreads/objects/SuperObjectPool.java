@@ -4,7 +4,7 @@ import java.util.Hashtable;
 import primeThreads.objects.Course;
 import java.lang.InterruptedException;
 
-public abstract class SuperObjectPool<T>{
+interface SuperObjectPool<T>{
 	
     private Hashtable locked, unlocked;
     private volatile static SuperObjectPool uniqueInstance;
