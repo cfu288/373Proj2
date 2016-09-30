@@ -23,7 +23,8 @@ public class ObjectPool extends SuperObjectPool{
     private volatile static ObjectPool uniqueInstance;
     
     /**
-    * getInstance ensures that a singleton instance of ObjectPool is returned.
+    * getInstance ensures that a singleton instance of ObjectPool is returned. 
+    * Not defined abstract in super since this is static.
     * @return   ObjectPool  Singleton instance of ObjectPool
     */
     public static ObjectPool getInstance(){
@@ -38,7 +39,7 @@ public class ObjectPool extends SuperObjectPool{
     }
     
     /**
-    * Private constructor
+    * Private constructor for singleton
     */
     private ObjectPool(){
         for(int i =0;i < NUM_CLASSES;i++){
