@@ -99,13 +99,15 @@ BIBLIOGRAPHY:
 This serves as evidence that we are in no way intending Academic Dishonesty.
 
 [
-  N/A
+  http://stackoverflow.com/questions/2885173/how-to-create-a-file-and-write-to-a-file-in-java
+  http://www.javaworld.com/article/2076690/java-concurrency/build-your-own-objectpool-in-java-to-boost-app-speed.html 
+  The first link was used for a reference to I/O, the second provided the idea of using dual hashmaps for the 
+  ObjectPool.
 ]
 
 ACKNOWLEDGEMENT:
 
 [
   During the coding process no classmates were consulted.
-
 ]
 
