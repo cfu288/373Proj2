@@ -16,8 +16,19 @@ PURPOSE:
   There are 7 courses (A, B, C, D, E, F, G) being offered in the summer session. The capacity for 
   each course is 60. The total number of students is 80. Each student is required to register for 
   5 courses.
+  
   In Result.java, we used an array list to save the results and used Collections.synchronizedList 
-  function to create a synchronized list so that it is thread-friendly. 
+  function to create a synchronized list so that it is thread-friendly. While we could have used
+  vector instead since it is already thread friendly, sources online mentioned that vector 
+  synchronizes on each individual operation, which can be undesireable. We opted for a simple data
+  structure since we only write to it; using more complex data structures would add no extra 
+  benifit. We only access the array when we are printing at the end.
+
+  In our ObjectPool, we decide to use dual HashMaps, one to store classes that were blocked and
+  another to store unlocked classes. Classes were popped off one HashMap and placed in the other
+  whenever that class was borroed or returned. Since we needed to search to see whether a class
+  existed in each catagory, HashMaps made sense due to their near O(1) lookup times. It also gave
+  us the ability to search classes by name by using the name as the hash key.
 ]
 
 PERCENT COMPLETE:
