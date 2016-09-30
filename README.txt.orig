@@ -16,11 +16,18 @@ PURPOSE:
   There are 7 courses (A, B, C, D, E, F, G) being offered in the summer session. The capacity for 
   each course is 60. The total number of students is 80. Each student is required to register for 
   5 courses.
-  In Result.java, we used an array list to save the results and used Collections.synchronizedList 
-  function to create a synchronized list so that it is thread-friendly. 
 ]
 
+<<<<<<< HEAD
 PERCENT COMPLETE:
+=======
+## To run by specifying args in build.xml (just for debugging, not for submission)
+ant -buildfile src/build.xml run
+ant -buildfile src/build.xml run1 //Run with debug val of 1 
+ant -buildfile src/build.xml run2 //Run with debug val of 2
+ant -buildfile src/build.xml run3
+ant -buildfile src/build.xml run4
+>>>>>>> 3a010c5a5e98ad4f13a19c633b583e82469cc329
 
 [
   We completed 100% of this project
